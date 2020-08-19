@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Rakennus- ja rakennesuunnittelu, asemapiirrokset ja valvonta
-image: /img/home-jumbotron.jpg
+image: /img/inststogartman-web11.jpg
 heading: Insinööritoimisto Jarmo Gartman Oy
 subheading: None
 mainpitch:
