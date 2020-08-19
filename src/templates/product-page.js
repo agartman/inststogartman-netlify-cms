@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
-import Features from '../components/Features'
-import Testimonials from '../components/Testimonials'
-import Pricing from '../components/Pricing'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import Layout from "../components/Layout";
+import Features from "../components/Features";
+import Testimonials from "../components/Testimonials";
+import Pricing from "../components/Pricing";
+import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 
 export const ProductPageTemplate = ({
   image,
@@ -15,7 +15,6 @@ export const ProductPageTemplate = ({
   intro,
   main,
   testimonials,
-  fullImage,
   pricing,
 }) => (
   <div className="content">
@@ -30,10 +29,10 @@ export const ProductPageTemplate = ({
       <h2
         className="has-text-weight-bold is-size-1"
         style={{
-          boxShadow: '0.5rem 0 0 #f40, -0.5rem 0 0 #f40',
-          backgroundColor: '#f40',
-          color: 'white',
-          padding: '1rem',
+          boxShadow: "0.5rem 0 0 #f40, -0.5rem 0 0 #f40",
+          backgroundColor: "#f40",
+          color: "white",
+          padding: "1rem",
         }}
       >
         {title}
@@ -81,16 +80,7 @@ export const ProductPageTemplate = ({
                 </div>
               </div>
               <Testimonials testimonials={testimonials} />
-              <div
-                className="full-width-image-container"
-                style={{
-                  backgroundImage: `url(${
-                    fullImage.childImageSharp
-                      ? fullImage.childImageSharp.fluid.src
-                      : fullImage
-                  })`,
-                }}
-              />
+
               <h2 className="has-text-weight-semibold is-size-2">
                 {pricing.heading}
               </h2>
@@ -102,7 +92,7 @@ export const ProductPageTemplate = ({
       </div>
     </section>
   </div>
-)
+);
 
 ProductPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -120,16 +110,15 @@ ProductPageTemplate.propTypes = {
     image3: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   }),
   testimonials: PropTypes.array,
-  fullImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   pricing: PropTypes.shape({
     heading: PropTypes.string,
     description: PropTypes.string,
     plans: PropTypes.array,
   }),
-}
+};
 
 const ProductPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  const { frontmatter } = data.markdownRemark;
 
   return (
     <Layout>
@@ -141,12 +130,11 @@ const ProductPage = ({ data }) => {
         intro={frontmatter.intro}
         main={frontmatter.main}
         testimonials={frontmatter.testimonials}
-        fullImage={frontmatter.full_image}
         pricing={frontmatter.pricing}
       />
     </Layout>
-  )
-}
+  );
+};
 
 ProductPage.propTypes = {
   data: PropTypes.shape({
@@ -154,9 +142,9 @@ ProductPage.propTypes = {
       frontmatter: PropTypes.object,
     }),
   }),
-}
+};
 
-export default ProductPage
+export default ProductPage;
 
 export const productPageQuery = graphql`
   query ProductPage($id: String!) {
@@ -224,13 +212,6 @@ export const productPageQuery = graphql`
           author
           quote
         }
-        full_image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
         pricing {
           heading
           description
@@ -244,4 +225,4 @@ export const productPageQuery = graphql`
       }
     }
   }
-`
+`;
